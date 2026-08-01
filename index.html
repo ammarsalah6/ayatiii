@@ -1,0 +1,1073 @@
+﻿<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>عيد ميلاد سعيد يا أميرتي ❤️</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@300;400;600;700;800&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --bg-1: #fff8f4;
+      --bg-2: #f6e7df;
+      --bg-3: #fbeee7;
+      --card: rgba(255, 255, 255, 0.72);
+      --card-strong: rgba(255, 255, 255, 0.92);
+      --text: #443430;
+      --muted: #86685f;
+      --primary: #c98f7a;
+      --primary-dark: #a86c59;
+      --accent: #e8b6a5;
+      --shadow: 0 20px 50px rgba(94, 63, 51, 0.10);
+      --border: rgba(202, 156, 139, 0.28);
+      --glass: blur(14px);
+      --radius-xl: 32px;
+      --radius-lg: 24px;
+      --radius-md: 18px;
+    }
+
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    html { scroll-behavior: smooth; }
+    body {
+      font-family: 'Cairo', sans-serif;
+      color: var(--text);
+      min-height: 100vh;
+      overflow-x: hidden;
+      background:
+        radial-gradient(circle at top left, rgba(255,255,255,0.92), transparent 34%),
+        radial-gradient(circle at bottom right, rgba(240, 197, 179, 0.55), transparent 24%),
+        linear-gradient(135deg, var(--bg-1), var(--bg-2) 55%, var(--bg-3));
+    }
+
+    /* Ambient background */
+    .bg-orb {
+      position: fixed;
+      border-radius: 50%;
+      filter: blur(20px);
+      opacity: 0.35;
+      pointer-events: none;
+      z-index: 0;
+      animation: float 12s ease-in-out infinite;
+    }
+    .orb1 { width: 240px; height: 240px; background: #ffd2c4; top: 6%; right: -70px; }
+    .orb2 { width: 180px; height: 180px; background: #f3c0d1; bottom: 10%; left: -50px; animation-delay: -4s; }
+    .orb3 { width: 120px; height: 120px; background: #fff1d6; top: 45%; left: 20%; animation-delay: -7s; }
+    @keyframes float { 0%,100%{ transform: translateY(0px) translateX(0px); } 50%{ transform: translateY(-18px) translateX(8px); } }
+
+    .wrap {
+      position: relative;
+      z-index: 1;
+      width: 100%;
+      min-height: 100vh;
+    }
+
+    /* Login overlay */
+    .overlay {
+      position: fixed;
+      inset: 0;
+      z-index: 1000;
+      display: grid;
+      place-items: center;
+      background:
+        radial-gradient(circle at top, rgba(255,255,255,0.90), rgba(255,255,255,0.70)),
+        linear-gradient(135deg, rgba(249, 229, 220, 0.95), rgba(248, 214, 196, 0.88));
+      backdrop-filter: blur(8px);
+      transition: opacity .8s ease, visibility .8s ease, transform .8s ease;
+    }
+    .overlay.hidden {
+      opacity: 0;
+      visibility: hidden;
+      transform: scale(1.03);
+    }
+    .login-card {
+      width: min(92vw, 430px);
+      background: rgba(255,255,255,0.76);
+      border: 1px solid rgba(255,255,255,0.75);
+      box-shadow: var(--shadow);
+      border-radius: 30px;
+      padding: 34px 24px;
+      text-align: center;
+      backdrop-filter: blur(16px);
+    }
+    .login-badge {
+      width: 72px; height: 72px;
+      margin: 0 auto 16px;
+      border-radius: 50%;
+      display: grid; place-items: center;
+      background: linear-gradient(135deg, #ffe7dd, #f8cbb7);
+      box-shadow: 0 12px 28px rgba(201, 143, 122, 0.22);
+      font-size: 1.9rem;
+    }
+    .login-card h1 {
+      font-size: clamp(1.3rem, 3vw, 1.8rem);
+      margin-bottom: 10px;
+      color: var(--primary-dark);
+      font-weight: 800;
+    }
+    .login-card p {
+      color: var(--muted);
+      margin-bottom: 18px;
+      line-height: 1.8;
+      font-size: 0.98rem;
+    }
+    .input-row {
+      display: grid;
+      gap: 12px;
+    }
+    .input-row input {
+      width: 100%;
+      border: 1px solid var(--border);
+      border-radius: 999px;
+      background: rgba(255,255,255,0.9);
+      padding: 14px 18px;
+      text-align: center;
+      outline: none;
+      font-size: 1rem;
+      color: var(--text);
+      transition: .25s;
+    }
+    .input-row input:focus {
+      border-color: rgba(201, 143, 122, 0.7);
+      box-shadow: 0 0 0 4px rgba(201, 143, 122, 0.12);
+    }
+    .btn {
+      border: none;
+      border-radius: 999px;
+      padding: 14px 18px;
+      font-family: inherit;
+      font-weight: 700;
+      cursor: pointer;
+      transition: transform .2s ease, box-shadow .2s ease, opacity .2s ease;
+      box-shadow: 0 14px 30px rgba(201, 143, 122, 0.22);
+    }
+    .btn:hover { transform: translateY(-2px); }
+    .btn-primary {
+      background: linear-gradient(135deg, var(--primary), var(--primary-dark));
+      color: #fff;
+    }
+    .error {
+      margin-top: 10px;
+      color: #b95050;
+      display: none;
+      font-size: 0.92rem;
+    }
+
+    /* Main content */
+    main {
+      opacity: 0;
+      transform: translateY(14px);
+      transition: opacity .9s ease, transform .9s ease;
+      pointer-events: none;
+    }
+    main.show {
+      opacity: 1;
+      transform: translateY(0);
+      pointer-events: auto;
+    }
+
+    .topbar {
+      position: sticky;
+      top: 0;
+      z-index: 100;
+      background: rgba(255,255,255,0.55);
+      backdrop-filter: blur(18px);
+      border-bottom: 1px solid rgba(255,255,255,0.5);
+    }
+    .topbar-inner {
+      width: min(1180px, calc(100% - 28px));
+      margin: 0 auto;
+      padding: 14px 0;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 14px;
+      flex-wrap: wrap;
+    }
+    .brand {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      font-weight: 800;
+      color: var(--primary-dark);
+    }
+    .brand-logo {
+      width: 48px;
+      height: 48px;
+      border-radius: 16px;
+      background: linear-gradient(135deg, #ffe5d8, #f0bea7);
+      display: grid;
+      place-items: center;
+      box-shadow: 0 12px 24px rgba(201, 143, 122, 0.20);
+    }
+    .top-actions { display: flex; gap: 10px; flex-wrap: wrap; }
+    .btn-ghost {
+      background: rgba(255,255,255,0.72);
+      color: var(--text);
+      border: 1px solid rgba(201, 143, 122, 0.18);
+      box-shadow: none;
+    }
+
+    .hero {
+      width: min(1180px, calc(100% - 28px));
+      margin: 0 auto;
+      padding: 42px 0 18px;
+      display: grid;
+      grid-template-columns: 1.1fr 0.9fr;
+      gap: 22px;
+      align-items: center;
+    }
+    .hero-card {
+      background: var(--card);
+      border: 1px solid rgba(255,255,255,0.76);
+      box-shadow: var(--shadow);
+      border-radius: var(--radius-xl);
+      padding: clamp(22px, 3vw, 36px);
+      backdrop-filter: var(--glass);
+    }
+    .hero h2 {
+      font-size: clamp(2rem, 4.8vw, 3.6rem);
+      line-height: 1.15;
+      color: var(--primary-dark);
+      margin-bottom: 14px;
+      font-weight: 800;
+    }
+    .hero .subtitle {
+      color: var(--muted);
+      line-height: 1.9;
+      font-size: 1.05rem;
+      margin-bottom: 22px;
+    }
+    .hero-badges {
+      display: flex;
+      gap: 10px;
+      flex-wrap: wrap;
+      margin-bottom: 22px;
+    }
+    .pill {
+      padding: 10px 14px;
+      border-radius: 999px;
+      background: rgba(255,255,255,0.7);
+      border: 1px solid rgba(201, 143, 122, 0.16);
+      color: var(--muted);
+      font-size: 0.93rem;
+    }
+    .hero-grid {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 14px;
+      margin-top: 14px;
+    }
+    .mini-box {
+      background: rgba(255,255,255,0.72);
+      border: 1px solid rgba(201, 143, 122, 0.14);
+      border-radius: 22px;
+      padding: 16px;
+      min-height: 100px;
+    }
+    .mini-box strong { display: block; color: var(--primary-dark); margin-bottom: 6px; }
+    .mini-box span { color: var(--muted); font-size: 0.95rem; line-height: 1.7; }
+
+    .side-visual {
+      background: linear-gradient(180deg, rgba(255,255,255,0.85), rgba(255,255,255,0.63));
+      border: 1px solid rgba(255,255,255,0.85);
+      box-shadow: var(--shadow);
+      border-radius: var(--radius-xl);
+      padding: 18px;
+      position: relative;
+      overflow: hidden;
+      min-height: 100%;
+    }
+    .memory-stack {
+      display: grid;
+      gap: 14px;
+    }
+    .memory-card {
+      background: rgba(255,255,255,0.84);
+      border: 1px solid rgba(201, 143, 122, 0.16);
+      border-radius: 24px;
+      padding: 14px;
+      box-shadow: 0 14px 28px rgba(94,63,51,0.06);
+      transform: rotate(-2deg);
+    }
+    .memory-card:nth-child(2) { transform: rotate(1deg); margin-inline-start: 18px; }
+    .memory-card:nth-child(3) { transform: rotate(-1deg); margin-inline-end: 12px; }
+    .memory-card .label {
+      display: inline-flex;
+      gap: 8px;
+      align-items: center;
+      margin-bottom: 8px;
+      color: var(--primary-dark);
+      font-weight: 700;
+    }
+    .memory-card p { color: var(--muted); line-height: 1.7; font-size: 0.95rem; }
+    .memory-photo {
+      width: 100%;
+      height: auto;
+      border-radius: 18px;
+      object-fit: cover;
+      border: 1px solid rgba(201, 143, 122, 0.12);
+      margin-top: 12px;
+      background: linear-gradient(135deg, #fbe0d2, #f5d2c6);
+      display: block;
+    }
+
+    .section {
+      width: min(1180px, calc(100% - 28px));
+      margin: 0 auto;
+      padding: 24px 0 10px;
+    }
+    .section-title {
+      font-size: clamp(1.5rem, 3vw, 2.3rem);
+      color: var(--primary-dark);
+      margin-bottom: 10px;
+      font-weight: 800;
+    }
+    .section-subtitle {
+      color: var(--muted);
+      line-height: 1.9;
+      margin-bottom: 22px;
+    }
+
+    /* Timeline */
+    .timeline {
+      position: relative;
+      display: grid;
+      gap: 22px;
+      padding: 12px 0 10px;
+    }
+    .timeline::before {
+      content: '';
+      position: absolute;
+      top: 16px;
+      bottom: 16px;
+      right: 28px;
+      width: 3px;
+      border-radius: 999px;
+      background: linear-gradient(180deg, rgba(201,143,122,0.15), rgba(201,143,122,0.8), rgba(201,143,122,0.15));
+      opacity: .65;
+    }
+    .step {
+      position: relative;
+      display: grid;
+      grid-template-columns: 74px 1fr;
+      gap: 18px;
+      align-items: start;
+    }
+    .dot {
+      width: 54px;
+      height: 54px;
+      border-radius: 18px;
+      background: linear-gradient(135deg, #f8d8c8, #e9b4a0);
+      display: grid;
+      place-items: center;
+      box-shadow: 0 12px 22px rgba(201, 143, 122, 0.18);
+      border: 1px solid rgba(255,255,255,0.85);
+      font-size: 1.3rem;
+      margin-right: 1px;
+      position: relative;
+      z-index: 2;
+    }
+    .step-card {
+      background: var(--card);
+      backdrop-filter: var(--glass);
+      border: 1px solid rgba(255,255,255,0.8);
+      border-radius: var(--radius-xl);
+      box-shadow: var(--shadow);
+      overflow: hidden;
+    }
+    .step-inner {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      min-height: 340px;
+    }
+    .step-inner.reverse .step-media { order: 2; }
+    .step-media {
+      padding: 16px;
+      background: linear-gradient(180deg, rgba(255,255,255,0.5), rgba(255,255,255,0.2));
+    }
+    .step-photo {
+      width: 100%;
+      height: 100%;
+      min-height: 308px;
+      object-fit: cover;
+      border-radius: 22px;
+      border: 1px solid rgba(201, 143, 122, 0.12);
+      background: linear-gradient(135deg, #fce3d5, #f7cfc1);
+    }
+    .step-content {
+      padding: 26px;
+      display: grid;
+      align-content: center;
+      gap: 12px;
+    }
+    .step-kicker {
+      display: inline-flex;
+      width: fit-content;
+      align-items: center;
+      gap: 8px;
+      padding: 8px 12px;
+      border-radius: 999px;
+      background: rgba(201,143,122,0.12);
+      color: var(--primary-dark);
+      font-weight: 700;
+      font-size: 0.92rem;
+    }
+    .step-content h3 {
+      font-size: clamp(1.35rem, 2.5vw, 2rem);
+      color: var(--text);
+      line-height: 1.35;
+      font-weight: 800;
+    }
+    .step-content p {
+      color: var(--muted);
+      line-height: 2;
+      font-size: 1rem;
+    }
+    .step-note {
+      margin-top: 4px;
+      padding: 14px 16px;
+      background: rgba(255,255,255,0.72);
+      border-radius: 18px;
+      border: 1px dashed rgba(201,143,122,0.28);
+      color: var(--primary-dark);
+      font-weight: 700;
+      line-height: 1.8;
+    }
+
+    /* Stats */
+    .stats {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 14px;
+    }
+    .stat {
+      background: rgba(255,255,255,0.72);
+      border: 1px solid rgba(201,143,122,0.14);
+      border-radius: 24px;
+      padding: 18px;
+      box-shadow: 0 14px 26px rgba(94,63,51,0.06);
+      text-align: center;
+    }
+    .stat .num {
+      font-size: clamp(1.4rem, 3vw, 2.2rem);
+      font-weight: 800;
+      color: var(--primary-dark);
+      margin-bottom: 4px;
+    }
+    .stat .label {
+      color: var(--muted);
+      font-size: 0.95rem;
+      line-height: 1.7;
+    }
+
+    /* Message / envelope */
+    .letter-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 18px;
+      align-items: stretch;
+    }
+    .letter, .wish-box, .surprise-box {
+      background: var(--card);
+      backdrop-filter: var(--glass);
+      border: 1px solid rgba(255,255,255,0.82);
+      border-radius: var(--radius-xl);
+      box-shadow: var(--shadow);
+      padding: 24px;
+    }
+    .letter h3, .wish-box h3, .surprise-box h3 {
+      color: var(--primary-dark);
+      font-size: 1.35rem;
+      margin-bottom: 12px;
+      font-weight: 800;
+    }
+    .typed {
+      line-height: 2.05;
+      color: var(--text);
+      font-size: 1.02rem;
+      white-space: pre-wrap;
+      min-height: 180px;
+    }
+    .open-letter {
+      margin-top: 16px;
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+    }
+
+    .reasons {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 14px;
+    }
+    .reason {
+      background: rgba(255,255,255,0.74);
+      border: 1px solid rgba(201,143,122,0.14);
+      border-radius: 22px;
+      padding: 18px;
+      min-height: 120px;
+    }
+    .reason strong {
+      display: block;
+      color: var(--primary-dark);
+      margin-bottom: 8px;
+      font-size: 1rem;
+    }
+    .reason span { color: var(--muted); line-height: 1.8; font-size: 0.95rem; }
+
+    .surprise-box {
+      text-align: center;
+      position: relative;
+      overflow: hidden;
+    }
+    .big-heart {
+      font-size: 4rem;
+      line-height: 1;
+      margin-bottom: 8px;
+      filter: drop-shadow(0 10px 20px rgba(201,143,122,0.25));
+    }
+    .surprise-box p {
+      color: var(--muted);
+      line-height: 1.95;
+      margin-bottom: 14px;
+    }
+    .confetti-btn {
+      min-width: 180px;
+    }
+
+    .footer {
+      width: min(1180px, calc(100% - 28px));
+      margin: 30px auto 40px;
+      text-align: center;
+      color: var(--muted);
+      line-height: 2;
+      font-size: 0.96rem;
+    }
+
+    /* Hearts and effects */
+    .floating-heart {
+      position: fixed;
+      top: -20px;
+      font-size: 1.2rem;
+      z-index: 999;
+      pointer-events: none;
+      animation: fall linear forwards;
+      user-select: none;
+    }
+    @keyframes fall {
+      to { transform: translateY(110vh) rotate(360deg); opacity: 0; }
+    }
+
+    .sparkles {
+      position: absolute;
+      inset: 0;
+      pointer-events: none;
+      overflow: hidden;
+    }
+    .sparkles span {
+      position: absolute;
+      width: 8px;
+      height: 8px;
+      border-radius: 50%;
+      background: rgba(255,255,255,0.85);
+      animation: twinkle 4s infinite ease-in-out;
+      box-shadow: 0 0 18px rgba(255,255,255,0.55);
+    }
+    @keyframes twinkle {
+      0%,100% { transform: scale(.6); opacity: .2; }
+      50% { transform: scale(1.1); opacity: 1; }
+    }
+
+    .reveal {
+      opacity: 1;
+      transform: translateY(24px) scale(.98);
+      transition: .8s ease;
+    }
+    .reveal.show {
+      opacity: 1;
+      transform: translateY(0) scale(1);
+    }
+
+    /* Surprise modal */
+    .modal {
+      position: fixed;
+      inset: 0;
+      display: grid;
+      place-items: center;
+      background: rgba(36, 22, 18, 0.35);
+      backdrop-filter: blur(8px);
+      z-index: 2000;
+      opacity: 0;
+      visibility: hidden;
+      transition: .35s ease;
+      padding: 18px;
+    }
+    .modal.show { opacity: 1; visibility: visible; }
+    .modal-card {
+      width: min(92vw, 460px);
+      background: rgba(255,255,255,0.92);
+      border-radius: 30px;
+      box-shadow: 0 25px 60px rgba(0,0,0,0.18);
+      padding: 28px 22px;
+      text-align: center;
+      position: relative;
+      overflow: hidden;
+    }
+    .modal-card h3 {
+      color: var(--primary-dark);
+      font-size: 1.5rem;
+      margin-bottom: 10px;
+      font-weight: 800;
+    }
+    .modal-card p {
+      color: var(--muted);
+      line-height: 2;
+      margin-bottom: 18px;
+    }
+    .close-x {
+      position: absolute;
+      top: 10px;
+      left: 10px;
+      width: 38px;
+      height: 38px;
+      border-radius: 50%;
+      border: none;
+      background: rgba(201,143,122,0.12);
+      color: var(--primary-dark);
+      cursor: pointer;
+      font-size: 1.2rem;
+    }
+
+    @media (max-width: 980px) {
+      .hero { grid-template-columns: 1fr; }
+      .step-inner { grid-template-columns: 1fr; }
+      .step-inner.reverse .step-media { order: 0; }
+      .letter-grid { grid-template-columns: 1fr; }
+      .stats { grid-template-columns: repeat(2, 1fr); }
+      .reasons { grid-template-columns: repeat(2, 1fr); }
+    }
+    @media (max-width: 640px) {
+      .topbar-inner { justify-content: center; }
+      .brand { width: 100%; justify-content: center; }
+      .top-actions { width: 100%; justify-content: center; }
+      .hero-grid { grid-template-columns: 1fr; }
+      .stats { grid-template-columns: 1fr; }
+      .reasons { grid-template-columns: 1fr; }
+      .timeline::before { right: 24px; }
+      .step { grid-template-columns: 62px 1fr; }
+      .dot { width: 48px; height: 48px; border-radius: 16px; }
+      .step-content { padding: 20px; }
+      .step-photo { min-height: 260px; }
+    }
+  </style>
+</head>
+<body>
+  <div class="bg-orb orb1"></div>
+  <div class="bg-orb orb2"></div>
+  <div class="bg-orb orb3"></div>
+
+  <div class="overlay" id="overlay">
+    <div class="login-card">
+      <div class="login-badge">❤️</div>
+      <h1>معمول بحب</h1>
+      <p>اكتبي السر عشان نبدأ الرحلة الجميلة من أولها لآخرها.</p>
+      <div class="input-row">
+        <input id="password" type="password" placeholder="كلمة السر..." autocomplete="off" />
+        <button class="btn btn-primary" onclick="checkPassword()">دخول ✨</button>
+      </div>
+      <div class="error" id="errorMsg">كلمة السر غير صحيحة، حاولي مرة أخرى.</div>
+    </div>
+  </div>
+
+  <div class="wrap">
+    <main id="mainContent">
+      <header class="topbar">
+        <div class="topbar-inner">
+          <div class="brand">
+            <div class="brand-logo">🎂</div>
+            <div>
+              <div>عيد ميلاد سعيد يا اياتي</div>
+              <small style="font-weight:600;color:var(--muted)">رحلة ذكريات وحب</small>
+            </div>
+          </div>
+          <div class="top-actions">
+            
+            <button class="btn btn-ghost" onclick="window.scrollTo({ top: document.body.scrollHeight, behavior: 'smooth' })">آخر الصفحة ⤓</button>
+          </div>
+        </div>
+      </header>
+
+      <section class="hero">
+        <div class="hero-card reveal">
+          <div class="hero-badges">
+            <span class="pill">💍 من أول لحظة</span>
+            
+          </div>
+          <h2>كل سنة وإنتِ أجمل هدية في حياتي ❤️</h2>
+          <p class="subtitle">
+            الصفحة دي متصممة كرحلة حب تبدأ من أول لحظة بينا لحد النهارده، وكل صورة فيها حكاية بتحكيها هنفضل فاكرنها طول العمر.
+          </p>
+          <div class="hero-grid">
+            <div class="mini-box">
+              <strong>العد التنازلي لذكرياتنا</strong>
+              <span id="loveCounter">جارٍ الحساب...</span>
+            </div>
+            <div class="mini-box">
+              <strong>رسالة صادقة</strong>
+              <span>وجودك في حياتي خلّى الأيام أحلى، والبيت أدفى، والقلب أهدى.</span>
+            </div>
+          </div>
+        </div>
+
+        <div class="side-visual reveal">
+          <div class="sparkles" id="sparkles"></div>
+          <div class="memory-stack">
+            <div class="memory-card">
+              <div class="label">📷 أول ذكرى</div>
+              <p>دي كانت اول مرة يكون معايا حاجة زكري منك واكيد لسا محتفظ بيها</p>
+              <img class="memory-photo" src="photo1.JPEG" alt="ذكرى 1">
+            </div>
+            <div class="memory-card">
+              <div class="label">🌹 مرحلة جميلة</div>
+              <p>كنا لا نملك الا هذا القدر من القرب في هذا الوقت </p>
+              <img class="memory-photo" src="photo2.png" alt="ذكرى 2">
+            </div>
+            <div class="memory-card">
+              <div class="label">💍 لحظة بداية حياة جديدة</div>
+              <p>من هنا بدات حياة لا طالما حلمت بها </p>
+              <img class="memory-photo" src="photo3.JPEG" alt="ذكرى 3">
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section class="section reveal">
+        <h2 class="section-title">رحلة ذكرياتنا</h2>
+        <p class="section-subtitle">هنرجع ورا شوية ونفتكر اللحظات الجميلة ال بينا </p>
+
+        <div class="timeline">
+          <article class="step">
+            <div class="dot">1</div>
+            <div class="step-card">
+              <div class="step-inner">
+                <div class="step-media"><img class="step-photo" src="photo1.JPEG" alt="مرحلة البداية"></div>
+                <div class="step-content">
+                  <div class="step-kicker">❤️ بداية الحكاية</div>
+                  <h3>اللحظة الأولى اللي جمعتنا</h3>
+                  <p>هنا بدأت القصة من مجرد تعارف بسيط، لكن كان فيه إحساس جميل خلّى كل شيء بعده مختلف.</p>
+                  <div class="step-note">"من هنا بدأت أجمل رحلة في حياتي."</div>
+                </div>
+              </div>
+            </div>
+          </article>
+
+          <article class="step">
+            <div class="dot">2</div>
+            <div class="step-card">
+              <div class="step-inner reverse">
+                <div class="step-media"><img class="step-photo" src="photo5.JPEG" alt="مرحلة أول مقابلة"></div>
+                <div class="step-content">
+                  <div class="step-kicker">🌷 أول مقابلة</div>
+                  <h3>يوم شفنا بعض لأول مرة</h3>
+                  <p>اللحظة دي كانت فارقة، لأن ملامحك وقتها سكنت في قلبي من غير ما أقول أي كلمة.</p>
+                  <div class="step-note">"في اللحظة دي، عرفت إنك مختلفة."</div>
+                </div>
+              </div>
+            </div>
+          </article>
+
+          <article class="step">
+            <div class="dot">3</div>
+            <div class="step-card">
+              <div class="step-inner">
+                <div class="step-media"><img class="step-photo" src="photo3.JPEG" alt="مرحلة الخطوبة"></div>
+                <div class="step-content">
+                  <div class="step-kicker">💍 الخطوبة</div>
+                  <h3>لما الأحلام بدأت تبقى حقيقة</h3>
+                  <p>من هنا كل حاجة بقت أوضح، وكل خطوة بعدها كانت بتقرّبنا من بيت مليان حب وسكينة.</p>
+                  <div class="step-note">"الفرح الحقيقي بدأ من اللحظة دي."</div>
+                </div>
+              </div>
+            </div>
+          </article>
+
+          <article class="step">
+            <div class="dot">4</div>
+            <div class="step-card">
+              <div class="step-inner reverse">
+                <div class="step-media"><img class="step-photo" src="photo4.JPEG" alt="مرحلة عقد القران"></div>
+                <div class="step-content">
+                  <div class="step-kicker">🤍 عقد القران</div>
+                  <h3>اليوم اللي بقينا فيه لبعض رسميًا</h3>
+                  <p>اليوم ده كان نهاية انتظار طويل وبداية حياة أجمل، فيها مسؤولية وحب واطمئنان وسند.</p>
+                  <div class="step-note">"وأصبحنا معًا، في طريق واحد، وقلب واحد."</div>
+                </div>
+              </div>
+            </div>
+          </article>
+
+          <article class="step">
+            <div class="dot">5</div>
+            <div class="step-card">
+              <div class="step-inner">
+                <div class="step-media"><img class="step-photo" src="photo6.JPEG" alt="مرحلة الزواج"></div>
+                <div class="step-content">
+                  <div class="step-kicker">🏡 بيتنا الجميل</div>
+                  <h3>كل يوم مع بعض بيبقى ذكرى جديدة</h3>
+                  <p></p>
+                  <div class="step-note">"وجودك جنبّي هو أجمل تفاصيل البيت."</div>
+                </div>
+              </div>
+            </div>
+          </article>
+
+          <article class="step">
+            <div class="dot">6</div>
+            <div class="step-card">
+              <div class="step-inner reverse">
+                <div class="step-media"><img class="step-photo" src="images/photo6.jpg" alt="مرحلة عيد الميلاد"></div>
+                <div class="step-content">
+                  <div class="step-kicker">🎂 عيد ميلادك</div>
+                  <h3>وأخيرًا: يومك المميز</h3>
+                  <p></p>
+                  <div class="step-note">"كل سنة وأنتِ قلبي، ونور البيت، وسبب ضحكتي."</div>
+                </div>
+              </div>
+            </div>
+          </article>
+        </div>
+      </section>
+
+      <section class="section reveal">
+        <h2 class="section-title">رسالة من القلب</h2>
+        <p class="section-subtitle"></p>
+
+        <div class="letter-grid">
+          <div class="letter">
+            <h3>✉️ افتحي الرسالة</h3>
+            <div class="typed" id="typedText"></div>
+            <button class="btn btn-primary open-letter" onclick="typeLetter()">إعادة كتابة الرسالة ✨</button>
+          </div>
+
+          <div class="wish-box">
+            <h3>✨ أسباب خلتكِ الأغلى</h3>
+            <div class="reasons">
+              <div class="reason"><strong>ابتسامتك</strong><span>بتخفف كل تعب وبتخلي يومي يبدأ بشكل أحسن.</span></div>
+              <div class="reason"><strong>قلبك الحنون</strong><span>فيه راحة وسكينة ما تتوصفش.</span></div>
+              <div class="reason"><strong>وجودك جنبي</strong><span>هو أحلى شعور، وأجمل أمان.</span></div>
+              <div class="reason"><strong>دعمك ليا</strong><span>بيخليني أقف وأكمل مهما كانت الظروف.</span></div>
+              <div class="reason"><strong>تفاصيلك</strong><span>كل حاجة فيكِ ليها معنى وجمال خاص.</span></div>
+              <div class="reason"><strong>أحلامنا</strong><span>اللي لسه مستنيانا، وأنا متحمس لها جدًا.</span></div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section class="section reveal">
+        <h2 class="section-title">لحظات محسوبة بالحب</h2>
+        <p class="section-subtitle"></p>
+        <div class="stats">
+          <div class="stat"><div class="num" id="daysStat">0</div><div class="label">يوم حب</div></div>
+          <div class="stat"><div class="num" id="hoursStat">0</div><div class="label">ساعة سعادة</div></div>
+          <div class="stat"><div class="num" id="minsStat">0</div><div class="label">دقيقة ذكريات</div></div>
+          <div class="stat"><div class="num" id="secsStat">0</div><div class="label">ثانية بنعيشها</div></div>
+        </div>
+      </section>
+
+      <section class="section reveal">
+        <div class="surprise-box">
+          <div class="big-heart">🎁</div>
+          <h3>المفاجأة الأخيرة</h3>
+          <p></p>
+          <button class="btn btn-primary confetti-btn" onclick="openSurprise()">افتحي المفاجأة ❤️</button>
+        </div>
+      </section>
+
+      <div class="footer">
+        
+      </div>
+    </main>
+  </div>
+
+  <div class="modal" id="surpriseModal" role="dialog" aria-modal="true">
+    <div class="modal-card">
+      <button class="close-x" onclick="closeSurprise()">×</button>
+      <h3>كل سنة وأنتِ أجمل قدر في حياتي ❤️</h3>
+      <p>
+        وجودك معايا هو أجمل نعمة، وكل يوم بيعدّي وأنا بحمد ربنا إنك في حياتي.
+        بحبك أكتر من أي وصف، وأتمنى تفضلي دايمًا أسعد إنسانة في الدنيا.
+      </p>
+      <button class="btn btn-primary" onclick="closeSurprise()">❤️ بحبك</button>
+    </div>
+  </div>
+
+  <audio id="bgMusic" loop>
+    <source src="music.mp3" type="audio/mpeg">
+  </audio>
+
+  <script>
+    // ====== Settings ======
+    const CORRECT_PASSWORD = "2981999"; // غيّر كلمة السر هنا
+    const RELATIONSHIP_START = new Date('2017-12-01T00:00:00'); // غيّر تاريخ بداية العلاقة هنا
+
+    const letterText = `إلى زوجتي وحبيبتي ونور عيني،\n\nفي يومك الجميل، حبيت أعمل لكِ صفحة مختلفة تليق بيكِ.\nكل مرحلة فينا كانت تستحق تُحفظ، وكل ذكرى جمعتنا كانت سبب في أن قلبي يحبك أكثر.\n\nأتمنى إن الصفحة دي تفضل ذكرى حلوة، وتفكرك دائمًا إنك أهم وأغلى إنسانة في حياتي.\n\nكل سنة وأنتِ بخير، وسعيدة، ومبسوطة، ومطمنة.\nوأنا دايمًا هنا... بحبك ومعاكِ.`;
+
+    const typedEl = document.getElementById('typedText');
+    const music = document.getElementById('bgMusic');
+    const musicBtn = document.getElementById('musicBtn');
+    let musicOn = false;
+    let typingTimer = null;
+    let typedOnce = false;
+
+    function checkPassword() {
+      const value = document.getElementById('password').value.trim();
+      const error = document.getElementById('errorMsg');
+      if (value === CORRECT_PASSWORD) {
+        document.getElementById('overlay').classList.add('hidden');
+        setTimeout(() => {
+          document.getElementById('overlay').style.display = 'none';
+          document.getElementById('mainContent').classList.add('show');
+          initAnimations();
+          startHearts();
+          typeLetter();
+          updateCounter();
+          setInterval(updateCounter, 1000);
+        }, 700);
+      } else {
+        error.style.display = 'block';
+      }
+      if (value === CORRECT_PASSWORD) {
+  // تشغيل الموسيقى تلقائياً عند الدخول
+  music.play().then(() => { musicOn = true; musicBtn.textContent = 'إيقاف الموسيقى 🔇'; }).catch(()=>{});
+  
+  document.getElementById('overlay').classList.add('hidden');
+  // ... باقي الكود
+}
+    }
+
+    document.getElementById('password').addEventListener('keydown', (e) => {
+      if (e.key === 'Enter') checkPassword();
+    });
+
+    function typeLetter() {
+      clearInterval(typingTimer);
+      typedEl.textContent = '';
+      let i = 0;
+      typingTimer = setInterval(() => {
+        typedEl.textContent += letterText[i] || '';
+        i++;
+        if (i >= letterText.length) clearInterval(typingTimer);
+      }, 26);
+      typedOnce = true;
+    }
+
+    function updateCounter() {
+      const now = new Date();
+      const diff = Math.max(0, now - RELATIONSHIP_START);
+      const totalSeconds = Math.floor(diff / 1000);
+      const days = Math.floor(totalSeconds / 86400);
+      const hours = Math.floor(totalSeconds / 3600);
+      const mins = Math.floor(totalSeconds / 60);
+      const secs = totalSeconds;
+      document.getElementById('daysStat').textContent = days.toLocaleString('en-US');
+      document.getElementById('hoursStat').textContent = hours.toLocaleString('en-US');
+      document.getElementById('minsStat').textContent = mins.toLocaleString('en-US');
+      document.getElementById('secsStat').textContent = secs.toLocaleString('en-US');
+      document.getElementById('loveCounter').textContent = `${days} يوم، ${hours} ساعة، ${mins} دقيقة، ${secs} ثانية من الحكاية الجميلة`;
+    }
+
+    function toggleMusic() {
+      if (!musicOn) {
+        music.play().then(() => {
+          musicOn = true;
+          musicBtn.textContent = 'إيقاف الموسيقى 🔇';
+        }).catch(() => {
+          alert('حطي ملف music.MPEG في نفس مجلد الصفحة، أو غيّري مساره.');
+        });
+      } else {
+        music.pause();
+        musicOn = false;
+        musicBtn.textContent = 'تشغيل الموسيقى 🔈';
+      }
+    }
+
+    function openSurprise() {
+      document.getElementById('surpriseModal').classList.add('show');
+      burstConfetti();
+    }
+    function closeSurprise() {
+      document.getElementById('surpriseModal').classList.remove('show');
+    }
+
+    function initAnimations() {
+      const observer = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+          if (entry.isIntersecting) entry.target.classList.add('show');
+        });
+      }, { threshold: 0.16 });
+      document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
+    }
+
+    function startHearts() {
+      setInterval(() => {
+        const heart = document.createElement('div');
+        heart.className = 'floating-heart';
+        const icons = ['❤️', '✨', '🌸', '💖', '🌷'];
+        heart.textContent = icons[Math.floor(Math.random() * icons.length)];
+        heart.style.left = Math.random() * 100 + 'vw';
+        heart.style.fontSize = (Math.random() * 0.9 + 0.8) + 'rem';
+        heart.style.animationDuration = (Math.random() * 3 + 4) + 's';
+        heart.style.opacity = Math.random() * 0.7 + 0.3;
+        document.body.appendChild(heart);
+        setTimeout(() => heart.remove(), 8000);
+      }, 380);
+    }
+
+    function burstConfetti() {
+      const colors = ['#c98f7a', '#e8b6a5', '#ffffff', '#f7d8c7', '#f0c6a7'];
+      for (let i = 0; i < 80; i++) {
+        const conf = document.createElement('div');
+        conf.style.position = 'fixed';
+        conf.style.left = Math.random() * 100 + 'vw';
+        conf.style.top = '-20px';
+        conf.style.width = Math.random() * 8 + 6 + 'px';
+        conf.style.height = Math.random() * 12 + 8 + 'px';
+        conf.style.background = colors[Math.floor(Math.random() * colors.length)];
+        conf.style.zIndex = 3000;
+        conf.style.borderRadius = '3px';
+        conf.style.pointerEvents = 'none';
+        conf.style.opacity = 0.95;
+        conf.style.transform = 'rotate(' + (Math.random() * 360) + 'deg)';
+        conf.style.transition = 'transform 4.8s linear, top 4.8s linear, opacity 4.8s linear';
+        document.body.appendChild(conf);
+        requestAnimationFrame(() => {
+          conf.style.top = (100 + Math.random() * 18) + 'vh';
+          conf.style.transform = 'rotate(' + (Math.random() * 720) + 'deg)';
+          conf.style.opacity = '0';
+        });
+        setTimeout(() => conf.remove(), 5200);
+      }
+    }
+
+    // Sparkles in right panel
+    (function makeSparkles() {
+      const holder = document.getElementById('sparkles');
+      if (!holder) return;
+      for (let i = 0; i < 16; i++) {
+        const s = document.createElement('span');
+        s.style.left = Math.random() * 100 + '%';
+        s.style.top = Math.random() * 100 + '%';
+        s.style.animationDelay = (Math.random() * 4) + 's';
+        s.style.animationDuration = (Math.random() * 3 + 3) + 's';
+        holder.appendChild(s);
+      }
+    })();
+
+    // Click outside modal to close
+    document.getElementById('surpriseModal').addEventListener('click', (e) => {
+      if (e.target.id === 'surpriseModal') closeSurprise();
+    });
+  </script>
+</body>
+</html>
